@@ -62,7 +62,7 @@ export function rateLimit(options?: Partial<RateLimitOptions>) {
   }
   const store = otherOptions.store || new MemoryStore(windowMs)
 
-  const incrementStore = (key): Promise<{ current: number; resetTime: Date }> => {
+  const incrementStore = (key: string): Promise<{ current: number; resetTime: Date }> => {
     return new Promise((resolve, reject) => {
       store.incr(key, (error, hits, resetTime) => {
         if (error) reject(error)

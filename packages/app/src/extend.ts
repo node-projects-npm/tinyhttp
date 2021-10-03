@@ -1,5 +1,5 @@
-import { getRouteFromApp, getSubdomains, Request } from './request'
-import type { Handler, NextFunction } from '@tinyhttp/router'
+import { getSubdomains, Request } from './request'
+import type { NextFunction } from '@tinyhttp/router'
 import type { Response } from './response'
 import {
   getFreshOrStale,
@@ -41,7 +41,7 @@ import { App } from './app'
  */
 export const extendMiddleware =
   <EngineOptions>(app: App) =>
-  (req: Request, res: Response<EngineOptions>, next: NextFunction) => {
+  (req: Request, res: Response<EngineOptions>, next: NextFunction): void => {
     const { settings } = app
 
     res.get = getResponseHeader(res)
